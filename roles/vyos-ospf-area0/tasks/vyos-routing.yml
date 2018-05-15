@@ -1,10 +1,10 @@
 ---
 
 - name: configuring ospf loopback
-      vyos_config:
-        lines:
-          - set interfaces loopback lo address {{ lo }}
-        save: yes
+  vyos_config:
+    lines:
+       - set interfaces loopback lo address {{ lo }}
+     save: yes
 
 - name: configuring ospf neworks
   vyos_config:
