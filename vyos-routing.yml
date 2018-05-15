@@ -1,0 +1,10 @@
+---
+
+- hosts: vyos-net1
+  gather_facts: false
+  conneciton: network_cli
+
+  roles:
+    - vyos-ospf-area0
+
+...

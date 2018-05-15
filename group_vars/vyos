@@ -1,5 +1,4 @@
-ansible_network_os=vyos
+ansible_network_os: vyos
 
-vyos_banner: "ANSIBLE CONFIGURED BANNER - authorized access only!!"
 
 

@@ -12,13 +12,22 @@
         text: ANSIBLE CONFIGURED BANNER - authorized access only!!
         state: present
 
-    - name: configuring ospf
+    - name: configuring ospf loopback
       vyos_config:
         lines:
           - set interfaces loopback lo address {{ lo }}
-          - set protocols ospf area 0 network {{ net1 }}
-          - set protocols ospf area 0 network {{ net2 }}
-          - set protocols ospf area 0 network {{ net3 }}
+        save: yes
+
+    - name: configuring ospf neworks
+      vyos_config:
+        lines:
+          - set protocols ospf area 0 network {{ item }}
+        save: yes
+      with_items: "{{ node_nets }}"
+
+    - name: configure all ospf settings
+      vyos_config:
+        lines:
           - set protocols ospf default-information originate always
           - set protocols ospf default-information originate metric 10
           - set protocols ospf default-information originate metric-type 2
