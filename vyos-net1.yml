@@ -25,7 +25,7 @@
         save: yes
       with_items: "{{ node_nets }}"
 
-    - name: configure all ospf settings
+    - name: configuring all ospf settings
       vyos_config:
         lines:
           - set protocols ospf default-information originate always

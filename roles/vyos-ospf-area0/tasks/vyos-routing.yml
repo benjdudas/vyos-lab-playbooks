@@ -11,7 +11,7 @@
     lines:
       - set protocols ospf area 0 network {{ item }}
     save: yes
-   with_items: "{{ node_nets }}"
+  with_items: "{{ node_nets }}"
 
 - name: configure all ospf settings
   vyos_config:

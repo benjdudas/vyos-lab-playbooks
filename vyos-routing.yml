@@ -2,9 +2,22 @@
 
 - hosts: vyos-net1
   gather_facts: false
-  conneciton: network_cli
+  connection: network_cli
 
   roles:
     - vyos-ospf-area0
+
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+  - name: Copying ssh key for vyos-c1
+    expect:
+      command: ssh-copy-id vyos-c1
+      responses:
+        'Are you sure you want to continue connecting (yes/no)?': 'yes\n'
+        '(?i)password:': '{{ admin_pass }}\n'
+    changed_when: false
+
 
 ...
