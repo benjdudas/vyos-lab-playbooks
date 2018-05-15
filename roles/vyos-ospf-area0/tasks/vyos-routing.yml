@@ -1,19 +1,30 @@
 ---
 
-- name: configuring ospf area 0
+- name: configuring ospf loopback
+      vyos_config:
+        lines:
+          - set interfaces loopback lo address {{ lo }}
+        save: yes
+
+- name: configuring ospf neworks
   vyos_config:
     lines:
-      - set interfaces loopback lo address {{ lo }}
-          - set protocols ospf area 0 network {{ item }}
-          - set protocols ospf default-information originate always
-          - set protocols ospf default-information originate metric 10
-          - set protocols ospf default-information originate metric-type 2
-          - set protocols ospf log-adjacency-changes
-          - set protocols ospf parameters router-id 1.1.1.1
-          - set protocols ospf redistribute connected metric-type 2
-          - set protocols ospf redistribute connected route-map CONNECT
-          - set policy route-map CONNECT rule 10 action permit
-          - set policy route-map CONNECT rule 10 match interface lo
-    loop: "{{ node_nets }}"
+      - set protocols ospf area 0 network {{ item }}
+    save: yes
+   with_items: "{{ node_nets }}"
 
+- name: configure all ospf settings
+  vyos_config:
+    lines:
+      - set protocols ospf default-information originate always
+      - set protocols ospf default-information originate metric 10
+      - set protocols ospf default-information originate metric-type 2
+      - set protocols ospf log-adjacency-changes
+      - set protocols ospf parameters router-id 1.1.1.1
+      - set protocols ospf redistribute connected metric-type 2
+      - set protocols ospf redistribute connected route-map CONNECT
+      - set policy route-map CONNECT rule 10 action permit
+      - set policy route-map CONNECT rule 10 match interface lo
+    save: yes
 
+...
