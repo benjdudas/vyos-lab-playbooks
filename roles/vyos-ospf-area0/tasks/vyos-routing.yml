@@ -4,7 +4,7 @@
   vyos_config:
     lines:
        - set interfaces loopback lo address {{ lo }}
-     save: yes
+    save: yes
 
 - name: configuring ospf neworks
   vyos_config:
