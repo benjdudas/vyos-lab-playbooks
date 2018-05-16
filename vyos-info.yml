@@ -1,0 +1,18 @@
+---
+- hosts: vyos-net1
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: device interfaces
+      vyos_command:
+        commands:
+          - show interfaces
+
+    - name: current routing table
+      vyos_command:
+        commands:
+          - show ip route
+
+...

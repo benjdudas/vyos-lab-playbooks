@@ -44,7 +44,7 @@
       - vyos-net2-1
       - vyos-net2-2
 
-- hosts: net2
+- hosts: net2-vyos
   gather_facts: false
   connection: network_cli
 
