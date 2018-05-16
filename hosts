@@ -7,3 +7,7 @@ vyos-net1
 vyos-c1
 vyos-net2-1
 vyos-net2-2
+
+[net2]
+vyos-net2-1
+vyos-net2-2
