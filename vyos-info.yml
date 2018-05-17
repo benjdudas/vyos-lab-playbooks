@@ -13,7 +13,7 @@
 
     - name: list interfaces
       debug:
-        msg: "{{ interfaces }}"
+        msg: "{{ interfaces.stdout_lines }}"
 
     - name: current routing table
       vyos_command:
@@ -23,6 +23,6 @@
 
     - name: list routes
       debug:
-        msg: "{{ routes }}"
+        msg: "{{ routes.stdout_lines }}"
 
 ...
