@@ -33,12 +33,12 @@
 
   tasks:
 
-  - name: Copying ssh key for vyos-c1
+  - name: Copying ssh key for vyos-net2-1 and vyos-net2-2
     expect:
       command: ssh-copy-id {{ item }}
       responses:
         'Are you sure you want to continue connecting (yes/no)?': 'yes\n'
-        '(?i)password:': '{{ admin_pass }}\n'
+        '(?i)password:': '{{ admin_pass }}'
     changed_when: false
     loop:
       - vyos-net2-1
