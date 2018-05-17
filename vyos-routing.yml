@@ -17,7 +17,7 @@
       command: ssh-copy-id vyos-c1
       responses:
         'Are you sure you want to continue connecting (yes/no)?': 'yes\n'
-        '(?i)password:': '{{ admin_pass }}\n'
+        '(?i)password:': '{{ admin_pass }}'
     changed_when: false
 
 
