@@ -9,10 +9,20 @@
       vyos_command:
         commands:
           - show interfaces
+      register: interfaces
+
+    - name: list interfaces
+      debug:
+        msg: "{{ interfaces }}"
 
     - name: current routing table
       vyos_command:
         commands:
           - show ip route
+      register: routes
+
+    - name: list routes
+      debug:
+        msg: "{{ routes }}"
 
 ...
